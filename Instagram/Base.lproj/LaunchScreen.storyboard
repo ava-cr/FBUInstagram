@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,17 +15,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen2" translatesAutoresizingMaskIntoConstraints="NO" id="yQh-oX-N9C">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen2" translatesAutoresizingMaskIntoConstraints="NO" id="yQh-oX-N9C">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yQh-oX-N9C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0HN-Lv-MQm"/>
-                            <constraint firstAttribute="bottom" secondItem="yQh-oX-N9C" secondAttribute="bottom" id="EmY-au-fyO"/>
-                            <constraint firstItem="yQh-oX-N9C" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="XkJ-ag-lcf"/>
-                            <constraint firstItem="yQh-oX-N9C" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="f5w-x3-gny"/>
+                            <constraint firstItem="yQh-oX-N9C" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Gig-jg-zhd"/>
+                            <constraint firstAttribute="bottom" secondItem="yQh-oX-N9C" secondAttribute="bottom" id="bFl-Ui-2eF"/>
+                            <constraint firstItem="yQh-oX-N9C" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="i82-9o-oJh"/>
+                            <constraint firstItem="yQh-oX-N9C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vZJ-lN-fqr"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,8 +36,5 @@
     </scenes>
     <resources>
         <image name="launchscreen2" width="415" height="900"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
