@@ -74,11 +74,54 @@
                                 <action selector="logoutButtonPressed:" destination="zeG-6U-sJd" id="X44-C0-WDG"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.app" catalog="system" id="d3Y-PZ-eDk">
+                            <connections>
+                                <segue destination="WDy-au-am0" kind="presentation" identifier="composePost" id="VEm-sJ-NGa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7wE-TQ-86b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-158" y="824"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="JGM-l0-AgM">
+            <objects>
+                <viewController id="BRt-0n-RW7" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sXK-az-3cL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RtA-h3-y0k">
+                                <rect key="frame" x="20" y="78" width="103" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Write a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BYD-H6-8aI">
+                                <rect key="frame" x="131" y="78" width="263" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wcc-jV-RaS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="XdW-UK-MQ0">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="THO-YB-jb2">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="BRt-0n-RW7" id="KGA-Lm-EuW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="captionTextField" destination="BYD-H6-8aI" id="Zzh-7k-fmv"/>
+                        <outlet property="picImageView" destination="RtA-h3-y0k" id="dUr-wP-xgl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dy7-Fp-UpC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1389.8550724637682" y="823.66071428571422"/>
         </scene>
         <!--Feed-->
         <scene sceneID="8Yf-hN-5dS">
@@ -113,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MyG-9U-J1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2842" y="824"/>
+            <point key="canvasLocation" x="3750.7246376811595" y="823.66071428571422"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xl8-PH-NUc">
@@ -151,11 +194,30 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNx-e6-pnF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2017" y="824"/>
+            <point key="canvasLocation" x="2926.0869565217395" y="823.66071428571422"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6na-sb-5jw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WDy-au-am0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="znH-fh-tB1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BRt-0n-RW7" kind="relationship" relationship="rootViewController" id="Xi2-9d-KnY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eGV-mn-UF8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="615.94202898550725" y="823.66071428571422"/>
         </scene>
     </scenes>
     <resources>
         <image name="feed_tab" width="25" height="25"/>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="profile_tab" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
