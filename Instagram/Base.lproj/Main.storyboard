@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,33 +51,40 @@
                     <connections>
                         <outlet property="passwordField" destination="nWO-0O-o3f" id="ouv-Q8-e5l"/>
                         <outlet property="usernameField" destination="K0G-re-Sy7" id="4cm-cD-GWT"/>
-                        <segue destination="y9U-Qd-K4x" kind="presentation" identifier="loginSegue" id="YzC-dh-usP"/>
+                        <segue destination="Agr-1t-Bxg" kind="presentation" identifier="loginSegue" id="YzC-dh-usP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="69.642857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Feed-->
         <scene sceneID="hkd-c2-7pg">
             <objects>
-                <viewController id="zeG-6U-sJd" sceneMemberID="viewController">
+                <viewController id="zeG-6U-sJd" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Aw-Yc-jgO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="QZx-0v-xyM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="aV1-D6-8Np"/>
+                    <navigationItem key="navigationItem" title="Feed" id="aV1-D6-8Np">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="nBB-rT-ylL">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="zeG-6U-sJd" id="X44-C0-WDG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7wE-TQ-86b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644.9275362318842" y="69.642857142857139"/>
+            <point key="canvasLocation" x="-158" y="824"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Feed-->
         <scene sceneID="8Yf-hN-5dS">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y9U-Qd-K4x" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_tab" id="QBX-0M-z1g"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qR0-GZ-Apj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -90,10 +97,65 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCU-O9-IZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-958" y="824"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="DeQ-w6-PhB">
+            <objects>
+                <viewController id="RHo-yH-MUs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dFe-a2-s5R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="bOi-7T-fNk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="a8C-C1-v5N"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MyG-9U-J1M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2842" y="824"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="xl8-PH-NUc">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Agr-1t-Bxg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KeD-fI-E4w">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="y9U-Qd-K4x" kind="relationship" relationship="viewControllers" id="86W-DA-5Q1"/>
+                        <segue destination="XeP-Bp-eug" kind="relationship" relationship="viewControllers" id="WHU-Vw-lGM"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cce-4o-Ddc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="734.78260869565224" y="69.642857142857139"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="kN4-SO-Hs0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XeP-Bp-eug" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" id="dTH-Yf-tcR"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uJW-2b-DnX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RHo-yH-MUs" kind="relationship" relationship="rootViewController" id="yRw-ZT-taq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNx-e6-pnF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2017" y="824"/>
         </scene>
     </scenes>
     <resources>
+        <image name="feed_tab" width="25" height="25"/>
+        <image name="profile_tab" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
