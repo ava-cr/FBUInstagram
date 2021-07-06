@@ -10,8 +10,12 @@
 #import "AppDelegate.h"
 #import "Parse/Parse.h"
 #import "SceneDelegate.h"
+#import "PostCell.h"
+#import "Post.h"
 
-@interface FeedViewController ()
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *posts;
 
 @end
 
@@ -19,7 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    [self getPosts];
 }
 - (IBAction)logoutButtonPressed:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
@@ -30,6 +39,47 @@
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     SceneDelegate *myDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     myDelegate.window.rootViewController = loginViewController;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    
+    Post *post = self.posts[indexPath.row];
+    if (self.posts) {
+        cell.usernameLabel.text = post.author.username;
+        cell.bottomUsernameLabel.text = post.author.username;
+        cell.profilePicImageView.layer.cornerRadius = cell.profilePicImageView.layer.bounds.size.height / 2;
+        cell.captionTextField.text = post.caption;
+                
+        NSURL *url = [NSURL URLWithString:post.image.url];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        cell.postImageView.image = [[UIImage alloc] initWithData:urlData];
+    }
+    
+    return cell;
+    
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.posts count];
+}
+
+- (void) getPosts {
+    // construct query
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query includeKey:@"author"];
+    query.limit = 20;
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            self.posts = posts;
+            NSLog(@"got posts");
+            NSLog(@"%lu", (unsigned long)[self.posts count]);
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 /*
