@@ -25,8 +25,9 @@
     self.usernameField.layer.borderWidth = 0.75;
     self.passwordField.layer.borderWidth = 0.75;
     
-    self.usernameField.layer.cornerRadius = 10;
-    self.passwordField.layer.cornerRadius = 10;
+    
+    self.usernameField.layer.cornerRadius = 8;
+    self.passwordField.layer.cornerRadius = 8;
     
 }
 - (IBAction)didTapLogIn:(id)sender {
