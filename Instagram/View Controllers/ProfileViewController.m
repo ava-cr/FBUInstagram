@@ -30,6 +30,13 @@
     layout.minimumInteritemSpacing = 1;
     layout.minimumLineSpacing = 1;
     
+    // Initialize a UIRefreshControl
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    
+    [refreshControl setTintColor:[UIColor whiteColor]];
+    [self.collectionView insertSubview:refreshControl atIndex:0];
+    
     
     [self getPosts];
 }
@@ -40,7 +47,10 @@
         PFUser *user = [PFUser currentUser];
         UserInfoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UserInfoCollectionViewCell" forIndexPath:indexPath];
         
+        cell.profPicImageView.layer.cornerRadius = cell.profPicImageView.layer.bounds.size.height / 2;
+        
         cell.usernameLabel.text = user.username;
+        cell.numPostsLabel.text = [NSString stringWithFormat:@"%d", (int)[self.posts count]];
         
         return cell;
     }
@@ -56,6 +66,7 @@
             NSData *urlData = [NSData dataWithContentsOfURL:url];
             cell.picImageView.image = [[UIImage alloc] initWithData:urlData];
             
+            
         }
 //        UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
         
@@ -63,6 +74,15 @@
         return cell;
     }
 
+}
+
+
+// Makes a network request to get updated data
+// Updates the collection view with the new data
+// Hides the RefreshControl
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+    [self getPosts];
+    [refreshControl endRefreshing];
 }
 
 - (void) getPosts {
@@ -93,7 +113,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.item == 0) {
-        return CGSizeMake(CGRectGetWidth(collectionView.frame), 200);
+        return CGSizeMake(CGRectGetWidth(collectionView.frame), 115);
     }
     
     else {

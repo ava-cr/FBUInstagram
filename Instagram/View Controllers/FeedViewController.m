@@ -18,6 +18,7 @@
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *posts;
+@property (nonatomic) BOOL loadedAllData;
 
 @end
 
@@ -29,6 +30,7 @@
     // Initialize a UIRefreshControl
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [refreshControl setTintColor:[UIColor whiteColor]];
     [self.tableView insertSubview:refreshControl atIndex:0];
     
     self.tableView.dataSource = self;
@@ -87,6 +89,7 @@
         if (posts != nil) {
             self.posts = posts;
             NSLog(@"got posts");
+            if ([self.posts count] < numberPosts) self.loadedAllData = true;
             [self.tableView reloadData];
         } else {
             NSLog(@"%@", error.localizedDescription);
@@ -94,11 +97,13 @@
     }];
 }
 
+
+
 // infinite scrolling method
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row + 1 == [self.posts count]){
+    if(!self.loadedAllData && indexPath.row + 1 == [self.posts count]){
         [self getPosts:(int)([self.posts count]+20)];
-        NSLog(@"%d", (int)([self.posts count]+20));
+        NSLog(@"loading more data");
     }
 }
 

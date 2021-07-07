@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UserInfoCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *profPicImageView;
+@property (weak, nonatomic) IBOutlet UILabel *numPostsLabel;
 
 @end
 
