@@ -13,6 +13,7 @@
 #import "PostCell.h"
 #import "Post.h"
 #import "DetailsViewController.h"
+#import <DateTools/DateTools.h>
 
 @interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -34,7 +35,7 @@
     self.tableView.delegate = self;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    [self getPosts];
+    [self getPosts:20];
 }
 - (IBAction)logoutButtonPressed:(id)sender {
     [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
@@ -60,6 +61,10 @@
         NSURL *url = [NSURL URLWithString:post.image.url];
         NSData *urlData = [NSData dataWithContentsOfURL:url];
         cell.postImageView.image = [[UIImage alloc] initWithData:urlData];
+        
+        NSDate *createdAt = post.createdAt;
+        NSString *createdAtString = createdAt.shortTimeAgoSinceNow;
+        cell.timestampLabel.text = [createdAtString stringByAppendingString:@" ago"];
     }
     
     return cell;
@@ -69,12 +74,13 @@
     return [self.posts count];
 }
 
-- (void) getPosts {
+- (void) getPosts: (int) numberPosts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query includeKey:@"author"];
     [query orderByDescending:@"createdAt"];
-    query.limit = 20;
+    query.limit = numberPosts;
+    // query.limit = 20;
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
@@ -88,12 +94,20 @@
     }];
 }
 
+// infinite scrolling method
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row + 1 == [self.posts count]){
+        [self getPosts:(int)([self.posts count]+20)];
+        NSLog(@"%d", (int)([self.posts count]+20));
+    }
+}
+
 // Makes a network request to get updated data
 // Updates the tableView with the new data
 // Hides the RefreshControl
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
 
-    [self getPosts];
+    [self getPosts:20];
 
     [refreshControl endRefreshing];
 }

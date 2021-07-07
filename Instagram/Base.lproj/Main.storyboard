@@ -115,7 +115,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="caption here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vZJ-Dw-HRn">
-                                                    <rect key="frame" x="85" y="488" width="81" height="19"/>
+                                                    <rect key="frame" x="85" y="488" width="81" height="18.5"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -123,6 +123,12 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBg-ii-8gz">
                                                     <rect key="frame" x="10" y="488.5" width="70" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2h ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="om7-IF-2rp">
+                                                    <rect key="frame" x="10" y="516.5" width="47" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -138,10 +144,13 @@
                                                 <constraint firstItem="TeI-uB-esw" firstAttribute="top" secondItem="68e-Lh-GzB" secondAttribute="topMargin" constant="5" id="Rku-1I-k4w"/>
                                                 <constraint firstItem="vZJ-Dw-HRn" firstAttribute="top" secondItem="Kh1-dg-d4e" secondAttribute="bottom" constant="8" id="TfC-RG-MW4"/>
                                                 <constraint firstItem="lBg-ii-8gz" firstAttribute="leading" secondItem="68e-Lh-GzB" secondAttribute="leading" constant="10" id="bEV-9i-3ak"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="om7-IF-2rp" secondAttribute="trailing" constant="10" id="dJA-pE-6oW"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="om7-IF-2rp" secondAttribute="bottom" constant="10" id="frE-TZ-v4l"/>
                                                 <constraint firstItem="TeI-uB-esw" firstAttribute="leading" secondItem="68e-Lh-GzB" secondAttribute="leading" constant="10" id="huB-r3-QNB"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="vZJ-Dw-HRn" secondAttribute="bottom" constant="10" id="nFW-hN-buq"/>
                                                 <constraint firstItem="vZJ-Dw-HRn" firstAttribute="leading" secondItem="lBg-ii-8gz" secondAttribute="trailing" constant="5" id="nek-6b-bzG"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EWA-Os-RXO" secondAttribute="trailing" constant="10" id="q2d-lE-UcF"/>
+                                                <constraint firstItem="om7-IF-2rp" firstAttribute="leading" secondItem="lBg-ii-8gz" secondAttribute="leading" id="tVC-Of-AQp"/>
+                                                <constraint firstItem="om7-IF-2rp" firstAttribute="top" secondItem="lBg-ii-8gz" secondAttribute="bottom" constant="10" id="xnt-6c-vFF"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -149,6 +158,7 @@
                                             <outlet property="captionTextField" destination="vZJ-Dw-HRn" id="BIp-Tv-lpo"/>
                                             <outlet property="postImageView" destination="Kh1-dg-d4e" id="PMZ-7Y-7NV"/>
                                             <outlet property="profilePicImageView" destination="TeI-uB-esw" id="D7V-Tk-Tcg"/>
+                                            <outlet property="timestampLabel" destination="om7-IF-2rp" id="0AC-YP-Pym"/>
                                             <outlet property="usernameLabel" destination="EWA-Os-RXO" id="kMr-b9-Dw9"/>
                                             <segue destination="bcw-bj-ues" kind="show" identifier="showDetails" id="Phr-Cp-A55"/>
                                         </connections>
