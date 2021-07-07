@@ -23,8 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.usernameLabel.text = self.post.author.username;
-    self.bottomUsernameLabel.text = self.post.author.username;
+    
     self.profilePicImageView.layer.cornerRadius = self.profilePicImageView.layer.bounds.size.height / 2;
     self.captionTextField.text = self.post.caption;
             
@@ -36,7 +35,8 @@
     NSString *createdAtString = createdAt.shortTimeAgoSinceNow;
     self.timestampLabel.text = [createdAtString stringByAppendingString:@" ago"];
     
-    
+    self.usernameLabel.text = self.post.author.username;
+    self.bottomUsernameLabel.text = self.usernameLabel.text;
 }
 
 /*

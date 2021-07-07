@@ -10,6 +10,7 @@
 #import "UserInfoCollectionViewCell.h"
 #import <Parse/Parse.h>
 #import "Post.h"
+#import "DetailsViewController.h"
 
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -62,6 +63,8 @@
         if ([self.posts count] != 0) {
             Post *post = self.posts[indexPath.item - 1];
             
+            cell.post = post;
+            
             NSURL *url = [NSURL URLWithString:post.image.url];
             NSData *urlData = [NSData dataWithContentsOfURL:url];
             cell.picImageView.image = [[UIImage alloc] initWithData:urlData];
@@ -88,7 +91,7 @@
 - (void) getPosts {
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    // [query includeKey:@"author"];
+    [query includeKey:@"author"];
     [query whereKey:@"author" equalTo:[PFUser currentUser]];
     [query orderByDescending:@"createdAt"];
     query.limit = 20;
@@ -125,14 +128,23 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"showDetails"]) {
+        NSLog(@"viewing details");
+        PhotoCollectionViewCell *tappedCell = sender;
+        //NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+        Post *post = tappedCell.post;
+        
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+    }
 }
-*/
+
 
 @end
