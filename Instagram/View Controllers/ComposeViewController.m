@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.captionTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Write a caption..." attributes:@{NSForegroundColorAttributeName: UIColor.lightGrayColor}];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -33,6 +35,9 @@
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)cancelTapped:(id)sender {
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 - (IBAction)shareButtonTapped:(id)sender {
     

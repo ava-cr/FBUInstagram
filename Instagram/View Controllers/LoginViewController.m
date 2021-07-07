@@ -19,6 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.usernameField.layer.borderColor = [UIColor.whiteColor CGColor];
+    self.passwordField.layer.borderColor = [UIColor.whiteColor CGColor];
+    self.usernameField.layer.borderWidth = 0.75;
+    self.passwordField.layer.borderWidth = 0.75;
+    
+    self.usernameField.layer.cornerRadius = 10;
+    self.passwordField.layer.cornerRadius = 10;
+    
 }
 - (IBAction)didTapLogIn:(id)sender {
     NSString *username = self.usernameField.text;
