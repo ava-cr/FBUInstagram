@@ -8,6 +8,7 @@
 #import "ComposeViewController.h"
 #import <UIKit/UIKit.h>
 #import "Post.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *picImageView;
@@ -22,6 +23,8 @@
     // Do any additional setup after loading the view.
     
     self.captionTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Write a caption..." attributes:@{NSForegroundColorAttributeName: UIColor.lightGrayColor}];
+    
+    [SVProgressHUD setContainerView:self.view];
 }
 
 
@@ -42,10 +45,13 @@
     [self dismissViewControllerAnimated:true completion:nil];
 }
 - (IBAction)shareButtonTapped:(id)sender {
+    // activity monitor
+    [SVProgressHUD show];
     
     [Post postUserImage:self.picImageView.image withCaption:self.captionTextField.text withCompletion:^(BOOL succeeded, NSError * error) {
         if (succeeded) {
             NSLog(@"the picture was posted!");
+            [SVProgressHUD dismiss];
             [self dismissViewControllerAnimated:true completion:nil];
         } else {
             NSLog(@"problem saving picture: %@", error.localizedDescription);
