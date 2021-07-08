@@ -37,6 +37,12 @@
     
     self.usernameLabel.text = self.post.author.username;
     self.bottomUsernameLabel.text = self.usernameLabel.text;
+    
+    PFFileObject *pfFile = [self.post.author objectForKey:@"profilePic"];
+    
+    NSURL *profURL = [NSURL URLWithString:pfFile.url];
+    NSData *profURLData = [NSData dataWithContentsOfURL:profURL];
+    self.profilePicImageView.image = [[UIImage alloc] initWithData:profURLData];
 }
 
 /*

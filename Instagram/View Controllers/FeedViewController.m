@@ -67,6 +67,12 @@
         NSDate *createdAt = post.createdAt;
         NSString *createdAtString = createdAt.shortTimeAgoSinceNow;
         cell.timestampLabel.text = [createdAtString stringByAppendingString:@" ago"];
+        
+        PFFileObject *pfFile = [post.author objectForKey:@"profilePic"];
+        
+        NSURL *profURL = [NSURL URLWithString:pfFile.url];
+        NSData *profURLData = [NSData dataWithContentsOfURL:profURL];
+        cell.profilePicImageView.image = [[UIImage alloc] initWithData:profURLData];
     }
     
     return cell;

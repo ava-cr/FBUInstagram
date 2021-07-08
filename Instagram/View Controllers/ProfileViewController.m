@@ -50,6 +50,17 @@
         
         cell.profPicImageView.layer.cornerRadius = cell.profPicImageView.layer.bounds.size.height / 2;
         
+        
+        cell.editProfileButton.layer.cornerRadius = 5;
+        cell.editProfileButton.layer.borderColor = [UIColor.darkGrayColor CGColor];
+        cell.editProfileButton.layer.borderWidth = 0.5;
+        
+        PFFileObject *pfFile = [user objectForKey:@"profilePic"];
+        
+        NSURL *url = [NSURL URLWithString:pfFile.url];
+        NSData *urlData = [NSData dataWithContentsOfURL:url];
+        cell.profPicImageView.image = [[UIImage alloc] initWithData:urlData];
+        
         cell.usernameLabel.text = user.username;
         cell.numPostsLabel.text = [NSString stringWithFormat:@"%d", (int)[self.posts count]];
         
@@ -62,6 +73,7 @@
         
         if ([self.posts count] != 0) {
             Post *post = self.posts[indexPath.item - 1];
+            
             
             cell.post = post;
             
@@ -92,6 +104,7 @@
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query includeKey:@"author"];
+    [query includeKey:@"profilePic"];
     [query whereKey:@"author" equalTo:[PFUser currentUser]];
     [query orderByDescending:@"createdAt"];
     query.limit = 20;
@@ -116,7 +129,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.item == 0) {
-        return CGSizeMake(CGRectGetWidth(collectionView.frame), 115);
+        return CGSizeMake(CGRectGetWidth(collectionView.frame), 180);
     }
     
     else {
