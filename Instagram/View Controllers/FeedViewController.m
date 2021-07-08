@@ -14,8 +14,9 @@
 #import "Post.h"
 #import "DetailsViewController.h"
 #import <DateTools/DateTools.h>
+#import "UserViewController.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *posts;
 @property (nonatomic) BOOL loadedAllData;
@@ -55,6 +56,8 @@
     
     Post *post = self.posts[indexPath.row];
     if (self.posts) {
+        cell.post = post;
+        cell.delegate = self; // for tap gesture recognizer
         cell.usernameLabel.text = post.author.username;
         cell.bottomUsernameLabel.text = post.author.username;
         cell.profilePicImageView.layer.cornerRadius = cell.profilePicImageView.layer.bounds.size.height / 2;
@@ -123,6 +126,14 @@
     [refreshControl endRefreshing];
 }
 
+- (void)postCell:(PostCell *)postCell didTap:(PFUser *)user{
+    // TODO: Perform segue to profile view controller
+    NSLog(@"%@", user.username);
+    [self performSegueWithIdentifier:@"showProfile" sender:user];
+}
+
+
+
 
 #pragma mark - Navigation
 
@@ -138,6 +149,10 @@
         
         DetailsViewController *detailsViewController = [segue destinationViewController];
         detailsViewController.post = post;
+    }
+    else if ([segue.identifier isEqual:@"showProfile"]){
+        UserViewController *userViewController = [segue destinationViewController];
+        userViewController.user = sender;
     }
 }
 

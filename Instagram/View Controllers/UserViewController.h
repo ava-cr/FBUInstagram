@@ -1,8 +1,8 @@
 //
-//  ProfileViewController.h
+//  UserViewController.h
 //  Instagram
 //
-//  Created by Ava Crnkovic-Rubsamen on 7/7/21.
+//  Created by Ava Crnkovic-Rubsamen on 7/8/21.
 //
 
 #import <UIKit/UIKit.h>
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ProfileViewController : UIViewController
+@interface UserViewController : UIViewController
 
 @property PFUser *user;
 
