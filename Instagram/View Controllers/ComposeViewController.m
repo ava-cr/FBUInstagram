@@ -25,6 +25,7 @@
     self.captionTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Write a caption..." attributes:@{NSForegroundColorAttributeName: UIColor.lightGrayColor}];
     
     [SVProgressHUD setContainerView:self.view];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
 }
 
 

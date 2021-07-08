@@ -7,6 +7,7 @@
 
 #import "DetailsViewController.h"
 #import "DateTools.h"
+#import "CommentsViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
@@ -45,14 +46,22 @@
     self.profilePicImageView.image = [[UIImage alloc] initWithData:profURLData];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqual:@"commentSegue"]) {
+        NSLog(@"going to comments");
+        UITableViewCell *tappedCell = sender;
+        
+        
+        CommentsViewController *cvc = [segue destinationViewController];
+        cvc.post = self.post;
+    }
 }
-*/
+
 
 @end

@@ -13,6 +13,7 @@
     [super awakeFromNib];
     // Initialization code
     
+    
     // add three tap gesture recognizers for profile photo, username at top of post,
     // and username at bottom of post -- you can't add one to two items it seems
     UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
@@ -39,6 +40,7 @@
     // Configure the view for the selected state
 }
 
+
 - (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
     //TODO: Call method delegate
     [self.delegate postCell:self didTap:self.post.author];
@@ -52,6 +54,12 @@
 - (void) didTapBottomUsername:(UITapGestureRecognizer *)sender{
     //TODO: Call method delegate
     [self.delegate postCell:self didTap:self.post.author];
+}
+- (IBAction)didTapLike:(id)sender {
+    
+    NSLog(@"liked post!");
+    
+    
 }
 
 @end
