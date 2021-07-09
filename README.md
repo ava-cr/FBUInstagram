@@ -75,7 +75,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 - 
     [DateTools](https://github.com/MatthewYork/DateTools#time-ago) - library to streamline date and time handling in iOS.
     
-    - 
+- 
     [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD) - activity monitor library
     
     
