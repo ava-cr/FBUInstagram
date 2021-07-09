@@ -45,9 +45,24 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here are 5 gifs to walkthrough the implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+1. Post details page, like, comment (keyboard slides view up feature), tap profile photo or username to see user profile page.
+<img src='https://github.com/ava-cr/FBUInstagram/blob/main/gifs/insta4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough 1' />
+
+2. Sign up, log in, home feed with timestamp, profile photo, username, etc.
+<img src='https://github.com/ava-cr/FBUInstagram/blob/main/gifs/insta1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough 1' />
+
+3. Take and post a photo, activity indicator while photo is posting, pull-to-refresh timeline.
+<img src='https://github.com/ava-cr/FBUInstagram/blob/main/gifs/insta2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough 1' />
+
+4.  Tab bar to view currently logged-in user's profile and their feed, edit profile photo.
+
+<img src='https://github.com/ava-cr/FBUInstagram/blob/main/gifs/insta3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough 1' />
+
+5. Infinite scrolling
+
+<img src='https://github.com/ava-cr/FBUInstagram/blob/main/gifs/insta5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough 1' />
 
 GIF created with [Kap](https://getkap.co/).
 
