@@ -10,6 +10,7 @@
 #import "CommentsViewController.h"
 #import "Like.h"
 #import <Parse/Parse.h>
+#import "UserViewController.h"
 
 @interface DetailsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *postImageView;
@@ -53,7 +54,39 @@
     
     [self getLiked];
     
+    // add three tap gesture recognizers for profile photo, username at top of post,
+    // and username at bottom of post -- you can't add one to two items it seems
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
     
+    [self.profilePicImageView addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profilePicImageView setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *usernameTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUsername:)];
+    
+    [self.usernameLabel addGestureRecognizer:usernameTapGestureRecognizer];
+    [self.usernameLabel setUserInteractionEnabled:YES];
+    
+    UITapGestureRecognizer *bottomUsernameTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapBottomUsername:)];
+    
+    [self.bottomUsernameLabel addGestureRecognizer:bottomUsernameTapGestureRecognizer];
+    [self.bottomUsernameLabel setUserInteractionEnabled:YES];
+    
+    
+}
+
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    //TODO: Call method delegate
+    [self performSegueWithIdentifier:@"showProfile" sender:self.post.author];
+}
+
+- (void) didTapUsername:(UITapGestureRecognizer *)sender{
+    //TODO: Call method delegate
+    [self performSegueWithIdentifier:@"showProfile" sender:self.post.author];
+}
+
+- (void) didTapBottomUsername:(UITapGestureRecognizer *)sender{
+    //TODO: Call method delegate
+    [self performSegueWithIdentifier:@"showProfile" sender:self.post.author];
 }
 
 -(void) getLiked {
@@ -66,7 +99,7 @@
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *likes, NSError *error) {
-        if (likes != nil) {
+        if (likes != nil && [likes count] != 0) {
             NSLog(@"user has liked post");
             Like *like = likes[0];
             self.like = like;
@@ -75,7 +108,7 @@
             
         } else {
             self.liked = false;
-            self.likeButton.selected = true;
+            self.likeButton.selected = false;
             NSLog(@"user hasn't liked post");
             NSLog(@"%@", error.localizedDescription);
         }
@@ -144,6 +177,10 @@
         
         CommentsViewController *cvc = [segue destinationViewController];
         cvc.post = self.post;
+    }
+    else if ([segue.identifier isEqual:@"showProfile"]){
+        UserViewController *userViewController = [segue destinationViewController];
+        userViewController.user = sender;
     }
 }
 

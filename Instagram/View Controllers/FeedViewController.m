@@ -76,6 +76,13 @@
         NSURL *profURL = [NSURL URLWithString:pfFile.url];
         NSData *profURLData = [NSData dataWithContentsOfURL:profURL];
         cell.profilePicImageView.image = [[UIImage alloc] initWithData:profURLData];
+        
+        // num likes label
+        if (cell.post.likeCount.intValue == 1) {
+            cell.numLikesLabel.text = [cell.post.likeCount.stringValue stringByAppendingString:@" like"];
+        }
+        else cell.numLikesLabel.text = [cell.post.likeCount.stringValue stringByAppendingString:@" likes"];
+        
     }
     
     return cell;

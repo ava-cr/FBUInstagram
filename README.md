@@ -28,19 +28,20 @@ The following **optional** features are implemented:
   - [X] Tapping on a post's username or profile photo goes to that user's profile page
 - [X] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - [X] User can comment on a post and see all comments for each post in the post details screen.
-- [ ] User can like a post and see number of likes for each post in the post details screen.
+- [X] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Style the login page to look like the real Instagram login page.
-- [ ] Style the feed to look like the real Instagram feed.
+- [X] Style the feed to look like the real Instagram feed.
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [X] Ability to unlike a post!
+- [X] I made the keyboard push the view up when you are writing a comment and dismiss automatically/slide the view down when you post it.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I would love to discuss further customizing the UI because I wanted to make my app look as much like Instagram as possible but wasn't sure how they made their nav bar look the way it does etc.
+2.  I would also like to talk more about animations and how to implement them!
 
 ## Video Walkthrough
 
@@ -56,10 +57,17 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
 
+- 
+    [DateTools](https://github.com/MatthewYork/DateTools#time-ago) - library to streamline date and time handling in iOS.
+    
+    - [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD) - activity monitor library
+
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+I encountered some challenges with configuring the layout of my collection view on the profile tab because I wanted to use two different custom cells (one for the header and one for all the photos) and so I had to use a function to define the layouts for each of them.
 
 ## License
 

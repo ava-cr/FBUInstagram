@@ -20,6 +20,7 @@
     [super viewDidLoad];
     
     self.profilePicImageView.layer.cornerRadius = self.profilePicImageView.layer.bounds.size.height /2;
+        
 }
 - (IBAction)didTapCancel:(id)sender {
     [self dismissViewControllerAnimated:true completion:nil];

@@ -20,8 +20,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.usernameField.layer.borderColor = [UIColor.whiteColor CGColor];
-    self.passwordField.layer.borderColor = [UIColor.whiteColor CGColor];
+    self.usernameField.layer.borderColor = [UIColor.grayColor CGColor];
+    self.passwordField.layer.borderColor = [UIColor.grayColor CGColor];
     self.usernameField.layer.borderWidth = 0.75;
     self.passwordField.layer.borderWidth = 0.75;
     
