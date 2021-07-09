@@ -53,7 +53,7 @@ Here are 5 gifs to walkthrough the implemented user stories:
 2. Sign up, log in, home feed with timestamp, profile photo, username, etc.
 <img src='https://github.com/ava-cr/FBUInstagram/blob/main/gifs/insta1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough 1' />
 
-3. Take and post a photo, activity indicator while photo is posting, pull-to-refresh timeline.
+3. Take and post a photo, progress HUD while the post is being uploaded to Parse, pull-to-refresh timeline.
 <img src='https://github.com/ava-cr/FBUInstagram/blob/main/gifs/insta2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough 1' />
 
 4.  Tab bar to view currently logged-in user's profile and their feed, edit profile photo.
@@ -64,7 +64,7 @@ Here are 5 gifs to walkthrough the implemented user stories:
 
 <img src='https://github.com/ava-cr/FBUInstagram/blob/main/gifs/insta5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough 1' />
 
-GIF created with [Kap](https://getkap.co/).
+All gifs were screen-recorded on an iPhone X.
 
 ## Credits
 
@@ -75,7 +75,7 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 - 
     [DateTools](https://github.com/MatthewYork/DateTools#time-ago) - library to streamline date and time handling in iOS.
     
-    - [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD) - activity monitor library
+    -[SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD) - activity monitor library
 
 
 ## Notes
